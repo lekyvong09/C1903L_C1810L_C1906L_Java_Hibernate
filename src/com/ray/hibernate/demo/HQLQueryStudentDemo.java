@@ -30,9 +30,17 @@ public class HQLQueryStudentDemo {
 			
 			displayStudents(theStudents);
 			
-			
+			System.out.println("\n\nStudent with firstName='Ray'");
 			theStudents = session.createQuery("from Student s where s.firstName='Ray'").getResultList();
 			
+			displayStudents(theStudents);
+			
+			System.out.println("\n\nStudent with firstName='Ray' OR firstName='Tommy'");
+			theStudents = session.createQuery("from Student s where s.firstName='Ray' or s.firstName='Tommy'").getResultList();
+			displayStudents(theStudents);
+			
+			System.out.println("\n\nStudent with firstName LIKE '%Tommy%' ");
+			theStudents = session.createQuery("from Student s where s.firstName LIKE '%Tommy%'").getResultList();
 			displayStudents(theStudents);
 			
 			// commit transaction
