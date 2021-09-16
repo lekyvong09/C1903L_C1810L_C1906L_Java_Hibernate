@@ -2,10 +2,10 @@ package com.ray.jdbc;
 
 import java.sql.DriverManager;
 
-public class TestJdbc {
+public class TestJdbcMSSQL {
 
 	public static void main(String[] args) {
-		String jdbcUrl = "jdbc:mysql://localhost:3306/hb_student_tracker?useSSL=false";
+		String jdbcUrl = "jdbc:sqlserver://localhost:1433;database=hb_student_tracker;encrypt=false;trustServerCertificate=false;loginTimeout=30;";
 		String user = "sa";
 		String pass = "ab123456..";
 		
