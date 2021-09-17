@@ -1,5 +1,6 @@
 package com.ray.hibernate.demo.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class InstructorDetail {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	@Column(name="youtube_channel")
 	private String youtubeChannel;
 	
 	private String hobby;
