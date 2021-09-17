@@ -19,7 +19,7 @@ public class DeleteStudentDemoApp {
 		Session session = factory.getCurrentSession();
 		
 		try {
-			int studentId = 3;
+			int studentId = 2;
 			// start transaction
 			session.beginTransaction();
 			
@@ -29,9 +29,9 @@ public class DeleteStudentDemoApp {
 			
 			System.out.println("\nDeleting student..." + myStudent);
 			
-			//myStudent.setEmail("aptech@email.com");
-			
-			session.delete(myStudent);
+			// HQL
+			session.createQuery("delete from Student where id=" + studentId ).executeUpdate();
+			//session.delete(myStudent);
 			
 			// commit transaction
 			session.getTransaction().commit();

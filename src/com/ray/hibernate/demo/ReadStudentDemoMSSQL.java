@@ -1,5 +1,7 @@
 package com.ray.hibernate.demo;
 
+import java.text.ParseException;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -8,7 +10,7 @@ import com.ray.hibernate.demo.entity.Student;
 
 public class ReadStudentDemoMSSQL {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		
 		// create session factory from configuration file
 		SessionFactory factory = new Configuration()
@@ -22,7 +24,7 @@ public class ReadStudentDemoMSSQL {
 		try {
 			// create a student
 			System.out.println("Create a student");
-			Student tempStudent = new Student("Tommy1", "Le1", "tommy1@email.com");
+			Student tempStudent = new Student("Tommy1", "Le1", "tommy1@email.com", DateUtils.parseDate("17/09/2000"));
 
 			
 			// start transaction
