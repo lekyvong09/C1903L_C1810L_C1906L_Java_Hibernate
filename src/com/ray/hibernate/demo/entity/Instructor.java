@@ -1,10 +1,13 @@
 package com.ray.hibernate.demo.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +27,11 @@ public class Instructor {
 	@Column(name="email")
 	private String email;
 
+	// create One-To-One relationship
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="instructor_detail_id")
+	private InstructorDetail instructorDetail;
+	
 	public Instructor() { }
 	
 	public Instructor(String firstName, String lastName, String email) {
@@ -62,6 +70,16 @@ public class Instructor {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	
+	
+	public InstructorDetail getInstructorDetail() {
+		return instructorDetail;
+	}
+
+	public void setInstructorDetail(InstructorDetail instructorDetail) {
+		this.instructorDetail = instructorDetail;
 	}
 
 	@Override
