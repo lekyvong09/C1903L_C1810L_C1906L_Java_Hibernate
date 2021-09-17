@@ -24,11 +24,14 @@ public class BidirectionalDeleteInstructorDetail {
 			// start transaction
 			session.beginTransaction();
 			
-			InstructorDetail tempInstructorDetail = session.get(InstructorDetail.class, 1);
+			InstructorDetail tempInstructorDetail = session.get(InstructorDetail.class, 2);
 			
 			System.out.println("tempInstructorDetail: " + tempInstructorDetail);
 			
 			System.out.println("the associated instructor: " + tempInstructorDetail.getInstructor());
+			
+			// break relationship between instructor & instructorDetail
+			tempInstructorDetail.getInstructor().setInstructorDetail(null);
 			
 			// delete the instructor detail
 			session.delete(tempInstructorDetail);
