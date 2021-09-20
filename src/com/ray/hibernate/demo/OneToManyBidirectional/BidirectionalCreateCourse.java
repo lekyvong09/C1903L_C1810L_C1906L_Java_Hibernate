@@ -31,8 +31,8 @@ public class BidirectionalCreateCourse {
 			Instructor tempInstructor = session.get(Instructor.class, theId);
 			
 			// create courses
-			Course tempCourse1 = new Course("The first course");
-			Course tempCourse2 = new Course("The second course");
+			Course tempCourse1 = new Course("The third course");
+			Course tempCourse2 = new Course("The fourth course");
 			
 			tempCourse1.setInstructor(tempInstructor);
 			
