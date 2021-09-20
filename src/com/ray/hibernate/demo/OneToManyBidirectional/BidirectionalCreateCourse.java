@@ -1,4 +1,4 @@
-package com.ray.hibernate.demo.OneToOne;
+package com.ray.hibernate.demo.OneToManyBidirectional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,7 +8,7 @@ import com.ray.hibernate.demo.entity.Course;
 import com.ray.hibernate.demo.entity.Instructor;
 import com.ray.hibernate.demo.entity.InstructorDetail;
 
-public class CreateDemo {
+public class BidirectionalCreateCourse {
 
 	public static void main(String[] args) {
 		// create session factory from configuration file
@@ -25,15 +25,22 @@ public class CreateDemo {
 		try {
 			// start transaction
 			session.beginTransaction();
-			Instructor tempInstructor = new Instructor("Ray", "Le", "ray@email.com");
 			
-			InstructorDetail tempInstructorDetail = new InstructorDetail("http://ray.channel", "Valor");
+			// get instructor from db
+			int theId = 3;
+			Instructor tempInstructor = session.get(Instructor.class, theId);
 			
-			tempInstructor.setInstructorDetail(tempInstructorDetail);
+			// create courses
+			Course tempCourse1 = new Course("The first course");
+			Course tempCourse2 = new Course("The second course");
 			
-			//save 
-			System.out.println("Saving instructor: " + tempInstructor);
-			session.save(tempInstructor);
+			tempCourse1.setInstructor(tempInstructor);
+			
+			tempInstructor.addCourseToInstructor(tempCourse2);
+			
+			// save
+			session.save(tempCourse1);
+			session.save(tempCourse2);
 			
 			// commit
 			session.getTransaction().commit();

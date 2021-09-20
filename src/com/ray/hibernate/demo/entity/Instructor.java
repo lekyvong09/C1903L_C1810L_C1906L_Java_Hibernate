@@ -1,5 +1,6 @@
 package com.ray.hibernate.demo.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -95,6 +96,15 @@ public class Instructor {
 
 	public void setCourses(List<Course> courses) {
 		this.courses = courses;
+	}
+	
+	// add method to add course to instructor.
+	public void addCourseToInstructor(Course tempCourse) {
+		if (courses == null) {
+			courses = new ArrayList<>();
+		}
+		courses.add(tempCourse);
+		tempCourse.setInstructor(this);
 	}
 
 	@Override
